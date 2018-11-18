@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -34,6 +36,7 @@ public class Login extends AppCompatActivity {
             String result =null;
             Handler handler = new Handler(); //Lo hacemos para crear un canal de acceso con el main Thread
 
+            @Override
             public void run() {
                 try{
 
@@ -41,7 +44,7 @@ public class Login extends AppCompatActivity {
                     EditText p = (EditText) findViewById(R.id.passwordR_txt);
 
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
-                    String query =String.format("http://198.162.1.44:9000/Application/login?username="+u.getText().toString()+"&password="+p.getText().toString());
+                    String query =String.format("http://192.168.1.44:9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -70,19 +73,53 @@ public class Login extends AppCompatActivity {
                     handler.post(new Runnable() {
                         public void run() {
 
-                            EditText message =(EditText) findViewById(R.id.messageText);
+                            TextView message =(TextView) findViewById(R.id.messageText);
                             message.setText(result);
 
+
+                            if (result.contains("Sorry")) {
+
+                                message.setText(result+". Please, try again.");
+                                EditText u = (EditText) findViewById(R.id.user_txt);
+                                EditText p = (EditText) findViewById(R.id.passwordR_txt);
+                                u.getText().clear();
+                                p.getText().clear();
+
+                            }
+                            else
+                            {
+                                Button btn= (Button) findViewById(R.id.enter_btn);
+                                btn.setVisibility(View.VISIBLE);
+                            }
+
                         }
+
                     });
+
 
                 } catch (Exception e){
                     e.printStackTrace();
                 }
 
+
+
             }
+
+
+
         }) .start();
+
+
+
+
+
     }
 
+
+    public void openShop (View view){
+        Intent intent= new Intent(this,Shop.class);
+        startActivity(intent);
+
+    }
 
 }

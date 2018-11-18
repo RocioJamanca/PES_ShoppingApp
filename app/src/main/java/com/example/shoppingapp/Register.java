@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -24,7 +25,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public void register(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
+    public void loginToServer(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
         new Thread(new Runnable() {
             InputStream stream = null;
@@ -37,9 +38,10 @@ public class Register extends AppCompatActivity {
 
                     EditText u = (EditText) findViewById(R.id.userR_txt);
                     EditText p = (EditText) findViewById(R.id.passwordR_txt);
-                    EditText e = (EditText) findViewById(R.id.emailR_txt);
-                    //
-                    String query =String.format("http://10.0.2.2:9000/Application/login?username="+u.getText().toString()+"&password="+p.getText().toString());
+                    EditText e= (EditText) findViewById(R.id.emailR_txt);
+
+                    // http://localhost:9000/Application/login?usernme=rocio&password=rocio
+                    String query =String.format("http://192.168.1.44:9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -55,7 +57,7 @@ public class Register extends AppCompatActivity {
                     //Para respuesta
                     BufferedReader reader =null;
                     StringBuilder stringBuilder = new StringBuilder();
-                    reader = new BufferedReader((new InputStreamReader(stream)));
+                    reader = new BufferedReader(new InputStreamReader(stream));
 
                     String line=null;
                     while ((line=reader.readLine()) != null){ //Mientras haya datos en la conexion
@@ -63,33 +65,36 @@ public class Register extends AppCompatActivity {
                     }
 
                     //Para mostrar el resultado en el TextView
+                    result=stringBuilder.toString();
                     Log.i("Login to server result",result);
                     handler.post(new Runnable() {
                         public void run() {
 
-                            EditText message =(EditText) findViewById(R.id.messageText);
+                            TextView message =(TextView) findViewById(R.id.messsageTextR);
                             message.setText(result);
 
+
                         }
+
                     });
 
-                }
 
-                catch (Exception e){
+                } catch (Exception e){
                     e.printStackTrace();
                 }
 
             }
         }) .start();
+
+        TextView message =(TextView) findViewById(R.id.messsageTextR);
+        message.setText(message.toString());
+        if (message.getText().toString()=="Congratulations! You've been registered correctly") {
+            message.setText(message.toString());
+        }
+        else
+        {
+            message.setText(message.toString());
+        }
+
     }
-
-
-
-/*
-    public void openShop (View view){
-
-        Intent intent1= new Intent(this,Shop.class);
-        startActivity(intent1);
-
-    }*/
 }

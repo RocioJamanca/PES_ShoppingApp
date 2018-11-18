@@ -11,7 +11,7 @@ public class Shop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        Intent intent1 = getIntent();
+        Intent intent = getIntent();
     }
 
 
