@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public void loginToServer(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
+    public void register(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
         new Thread(new Runnable() {
             InputStream stream = null;
@@ -41,7 +42,7 @@ public class Register extends AppCompatActivity {
                     EditText e= (EditText) findViewById(R.id.emailR_txt);
 
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
-                    String query =String.format("http://192.168.1.44:9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
+                    String query =String.format("http://192.168.43.91:9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -73,6 +74,25 @@ public class Register extends AppCompatActivity {
                             TextView message =(TextView) findViewById(R.id.messsageTextR);
                             message.setText(result);
 
+                            if (result.contains("Sorry")|| result.contains("Email")) {
+
+                                message.setText(result+". Please, try again.");
+                                EditText u = (EditText) findViewById(R.id.userR_txt);
+                                EditText p = (EditText) findViewById(R.id.passwordR_txt);
+                                EditText e= (EditText) findViewById(R.id.emailR_txt);
+                                u.getText().clear();
+                                p.getText().clear();
+                                e.getText().clear();
+
+                                Button btn= (Button) findViewById(R.id.enter_btn2);
+                                btn.setVisibility(View.INVISIBLE);
+
+                            }
+                            else
+                            {
+                                Button btn= (Button) findViewById(R.id.enter_btn2);
+                                btn.setVisibility(View.VISIBLE);
+                            }
 
                         }
 
@@ -85,16 +105,11 @@ public class Register extends AppCompatActivity {
 
             }
         }) .start();
+    }
 
-        TextView message =(TextView) findViewById(R.id.messsageTextR);
-        message.setText(message.toString());
-        if (message.getText().toString()=="Congratulations! You've been registered correctly") {
-            message.setText(message.toString());
-        }
-        else
-        {
-            message.setText(message.toString());
-        }
+    public void openShop (View view){
+        Intent intent= new Intent(this,Shop.class);
+        startActivity(intent);
 
     }
 }

@@ -42,9 +42,10 @@ public class Login extends AppCompatActivity {
 
                     EditText u = (EditText) findViewById(R.id.user_txt);
                     EditText p = (EditText) findViewById(R.id.passwordR_txt);
-
+                    //IP CASA:192.168.1.44
+                    //IP red Mobil 192.168.43.91
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
-                    String query =String.format("http://192.168.1.44:9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
+                    String query =String.format("http://192.168.43.91:9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -84,6 +85,8 @@ public class Login extends AppCompatActivity {
                                 EditText p = (EditText) findViewById(R.id.passwordR_txt);
                                 u.getText().clear();
                                 p.getText().clear();
+                                Button btn= (Button) findViewById(R.id.enter_btn);
+                                btn.setVisibility(View.INVISIBLE);
 
                             }
                             else
