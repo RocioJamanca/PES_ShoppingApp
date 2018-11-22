@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -74,6 +75,8 @@ public class Register extends AppCompatActivity {
                             TextView message =(TextView) findViewById(R.id.messsageTextR);
                             message.setText(result);
 
+
+
                             if (result.contains("Sorry")|| result.contains("Email")) {
 
                                 message.setText(result+". Please, try again.");
@@ -84,14 +87,14 @@ public class Register extends AppCompatActivity {
                                 p.getText().clear();
                                 e.getText().clear();
 
-                                Button btn= (Button) findViewById(R.id.enter_btn2);
-                                btn.setVisibility(View.INVISIBLE);
+
 
                             }
                             else
                             {
-                                Button btn= (Button) findViewById(R.id.enter_btn2);
-                                btn.setVisibility(View.VISIBLE);
+
+                                Intent intent= new Intent(getApplicationContext(),Shop.class);
+                                startActivity(intent);
                             }
 
                         }

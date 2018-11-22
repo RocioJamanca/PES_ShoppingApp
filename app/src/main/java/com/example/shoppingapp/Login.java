@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -85,15 +86,20 @@ public class Login extends AppCompatActivity {
                                 EditText p = (EditText) findViewById(R.id.passwordR_txt);
                                 u.getText().clear();
                                 p.getText().clear();
-                                Button btn= (Button) findViewById(R.id.enter_btn);
-                                btn.setVisibility(View.INVISIBLE);
+
+
 
                             }
                             else
                             {
-                                Button btn= (Button) findViewById(R.id.enter_btn);
-                                btn.setVisibility(View.VISIBLE);
+
+                                Intent intent= new Intent(getApplicationContext(),Shop.class);
+                                startActivity(intent);
+
                             }
+
+
+
 
                         }
 
@@ -117,12 +123,4 @@ public class Login extends AppCompatActivity {
 
 
     }
-
-
-    public void openShop (View view){
-        Intent intent= new Intent(this,Shop.class);
-        startActivity(intent);
-
-    }
-
 }

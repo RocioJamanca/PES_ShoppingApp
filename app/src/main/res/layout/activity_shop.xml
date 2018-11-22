@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".Shop">
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="425dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabBackground="@color/colorPrimary"
+        app:tabIndicatorColor="@android:color/background_light"
+        app:tabTextColor="@android:color/background_light">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@android:drawable/ic_dialog_dialer" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="menu"
+            
+        />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/wishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wishlist"
+            />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@android:drawable/ic_menu_manage" />
+    </android.support.design.widget.TabLayout>
+
 </android.support.constraint.ConstraintLayout>
