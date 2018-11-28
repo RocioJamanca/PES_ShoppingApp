@@ -31,6 +31,8 @@ public class Login extends AppCompatActivity {
 
    public void loginToServer(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
+        ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             InputStream stream = null;
             String str="";
@@ -46,7 +48,7 @@ public class Login extends AppCompatActivity {
                     //IP CASA:192.168.1.44
                     //IP red Mobil 192.168.43.91
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
-                    String query =String.format("http://192.168.43.91:9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
+                    String query =String.format("http://"+getResources().getString(R.string.ip)+":9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -77,7 +79,8 @@ public class Login extends AppCompatActivity {
 
                             TextView message =(TextView) findViewById(R.id.messageText);
                             message.setText(result);
-
+                            ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar);
+                            progressBar.setVisibility(View.INVISIBLE);
 
                             if (result.contains("Sorry")) {
 

@@ -13,4 +13,10 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_categories">Categories</string>
+
+    <!--//IP CASA:192.168.1.44
+    //IP red Mobil 192.168.43.91
+    -->
+    <string name="ip"> 192.168.43.91</string>
 </resources>

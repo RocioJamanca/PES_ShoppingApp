@@ -29,6 +29,8 @@ public class Register extends AppCompatActivity {
 
     public void register(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
+        ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar2);
+        progressBar.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             InputStream stream = null;
             String str="";
@@ -43,7 +45,7 @@ public class Register extends AppCompatActivity {
                     EditText e= (EditText) findViewById(R.id.emailR_txt);
 
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
-                    String query =String.format("http://192.168.43.91:9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
+                    String query =String.format("http://"+getResources().getString(R.string.ip)+":9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
                     HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -75,7 +77,8 @@ public class Register extends AppCompatActivity {
                             TextView message =(TextView) findViewById(R.id.messsageTextR);
                             message.setText(result);
 
-
+                            ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar2);
+                            progressBar.setVisibility(View.INVISIBLE);
 
                             if (result.contains("Sorry")|| result.contains("Email")) {
 
@@ -110,9 +113,5 @@ public class Register extends AppCompatActivity {
         }) .start();
     }
 
-    public void openShop (View view){
-        Intent intent= new Intent(this,Shop.class);
-        startActivity(intent);
 
-    }
 }
