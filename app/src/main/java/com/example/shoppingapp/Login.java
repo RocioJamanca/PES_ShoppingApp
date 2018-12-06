@@ -29,6 +29,7 @@ public class Login extends AppCompatActivity {
 
     }
 
+     //Threads
    public void loginToServer(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
         ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar);
@@ -89,8 +90,6 @@ public class Login extends AppCompatActivity {
                                 EditText p = (EditText) findViewById(R.id.passwordR_txt);
                                 u.getText().clear();
                                 p.getText().clear();
-
-
 
                             }
                             else
