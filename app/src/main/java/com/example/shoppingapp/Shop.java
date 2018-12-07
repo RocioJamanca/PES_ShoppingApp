@@ -39,6 +39,11 @@ public class Shop extends AppCompatActivity {
                 Intent intent= new Intent(this,Category.class);
                 startActivity(intent);
                 break;
+            case R.id.brands:
+                Intent intent1= new Intent(this,Brand.class);
+                startActivity(intent1);
+                break;
+
 
 
         }
