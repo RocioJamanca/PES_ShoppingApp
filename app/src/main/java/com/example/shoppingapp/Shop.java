@@ -33,11 +33,16 @@ public class Shop extends AppCompatActivity {
     }
 
 
+    public void openSelection(View view){
+        switch ( view.getId()){
+            case R.id.categories:
+                Intent intent= new Intent(this,Category.class);
+                startActivity(intent);
+                break;
 
 
-    public void openCategories(View view){
-        Intent intent= new Intent(this,Category.class);
-        startActivity(intent);
+        }
+
 
     }
 
