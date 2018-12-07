@@ -42,7 +42,7 @@ public class Products extends AppCompatActivity {
         }
         else if (category!=null)
         {
-            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByCategory?category="+category);
+            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByCategories?category="+category);
         }
     }
 
@@ -98,14 +98,14 @@ public class Products extends AppCompatActivity {
 
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
-            // User.fromJson(jsonArray);
+
             JSONArray jsonObjects = null;
-            ArrayList<String> products = new ArrayList<String>();
+            ArrayList<Product> products = new ArrayList<Product>();
             try {
                 jsonObjects = new JSONArray(result);
                 for (int i = 0; i < jsonObjects.length(); i++) {
                     try {
-                        products.add((String)jsonObjects.get(i));
+                        products.add(new Product(jsonObjects.getJSONObject(i)));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -117,7 +117,7 @@ public class Products extends AppCompatActivity {
             //Construct the data source
             //ArrayList<String> categoryArrayList = new ArrayList<>();
             //Create the adapter to convert the array to views
-            ProductAdapter adapter = new ProductAdapter(getApplicationContext(),products);
+            ProductAdapter adapter = new ProductAdapter(context,products);
             //Attach the adapter to a ListView
             final ListView listView =(ListView) findViewById(R.id.listView_products);
             listView.setAdapter(adapter);

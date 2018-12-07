@@ -13,17 +13,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ProductAdapter  extends ArrayAdapter<String> {
+public class ProductAdapter  extends ArrayAdapter<Product> {
     Resources res = getContext().getResources();
 
-    public ProductAdapter(Context context, ArrayList<String> products){super (context,0,products);
+    public ProductAdapter(Context context, ArrayList<Product> products){super (context,0,products);
 
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         String ip=res.getString(R.string.ip);
         //Get the datat item for this position
-        String product = getItem(position);
+        Product product = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_products, parent, false);
@@ -31,7 +31,7 @@ public class ProductAdapter  extends ArrayAdapter<String> {
         //Lookup view for data population
         TextView name_product=(TextView) convertView.findViewById(R.id.name_product);
         // Populate the data into the template view using the data object
-        name_product.setText(product);
+        name_product.setText(product.model);
 
         //ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_brand);
         //Picasso.get().load("http://"+ip+":9000/Application/showBrandImage?brand="+brand).into(imageView);

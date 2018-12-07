@@ -17,10 +17,9 @@ public class Product {
            this.brand=object.getString("brand");
            this.category=object.getString("category");
            this.price=object.getDouble("price");
-           //
        }
        catch (JSONException e){
-
+        e.printStackTrace();
        }
     }
 }
