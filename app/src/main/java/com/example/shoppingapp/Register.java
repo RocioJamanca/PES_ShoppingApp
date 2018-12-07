@@ -29,7 +29,7 @@ public class Register extends AppCompatActivity {
 
     public void register(View view) //Hacemos la funcion para poder conectar al servido y conseguir hacer el login
     {
-        ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar2);
+        ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar_R);
         progressBar.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             InputStream stream = null;
@@ -77,7 +77,7 @@ public class Register extends AppCompatActivity {
                             TextView message =(TextView) findViewById(R.id.messsageTextR);
                             message.setText(result);
 
-                            ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar2);
+                            ProgressBar progressBar=(ProgressBar) findViewById(R.id.progressBar_R);
                             progressBar.setVisibility(View.INVISIBLE);
 
                             if (result.contains("Sorry")|| result.contains("Email")) {
