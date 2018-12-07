@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,34 +23,37 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Category extends AppCompatActivity {
-
+public class Products extends AppCompatActivity {
     static String ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_products);
         Intent intent = getIntent();
-        getResources().getString(R.string.ip);
-        ip = getResources().getString(R.string.ip);
+        Intent intent1 = getIntent();
+        String brand = intent.getStringExtra("brand");
+        String category=intent1.getStringExtra("category");
+        //Toast.makeText(this,brand,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,category,Toast.LENGTH_LONG).show();
+        ip=getResources().getString(R.string.ip);
         //new findCategories(this).execute("http://ip:9000/Application/findCategorries");
-        new findCategories(this).execute("http://"+ip+":9000/Application/findCategories");
-
-        ///
-
-
+        if(brand!=null) {
+            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByBrand?brand="+brand);
+        }
+        else if (category!=null)
+        {
+            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByCategory?category="+category);
+        }
     }
 
-
-
-    private class findCategories extends AsyncTask<String,Void,String> {
+    private class findByCategoryOrBrand extends AsyncTask<String,Void,String> {
 
         Context context;
         InputStream stream =null;
         String str="";
         String result=null;
 
-        private findCategories(Context context){
+        private findByCategoryOrBrand(Context context){
             this.context=context;
         }
 
@@ -78,7 +82,7 @@ public class Category extends AppCompatActivity {
 
                 result = sb.toString();
 
-                Log.i("Categories Respones",result);
+                Log.i("CategoryOrBrandRespo",result);
 
                 return result;
 
@@ -89,19 +93,19 @@ public class Category extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-           // TextView textView=(TextView) findViewById( R.id.textView6);
+            // TextView textView=(TextView) findViewById( R.id.textView6);
             //textView.setText(result);
 
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
             // User.fromJson(jsonArray);
             JSONArray jsonObjects = null;
-            ArrayList<String> categories = new ArrayList<String>();
+            ArrayList<String> products = new ArrayList<String>();
             try {
                 jsonObjects = new JSONArray(result);
                 for (int i = 0; i < jsonObjects.length(); i++) {
                     try {
-                        categories.add((String)jsonObjects.get(i));
+                        products.add((String)jsonObjects.get(i));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -113,25 +117,22 @@ public class Category extends AppCompatActivity {
             //Construct the data source
             //ArrayList<String> categoryArrayList = new ArrayList<>();
             //Create the adapter to convert the array to views
-            CategoryAdapter adapter = new CategoryAdapter(getApplicationContext(),categories);
+            ProductAdapter adapter = new ProductAdapter(getApplicationContext(),products);
             //Attach the adapter to a ListView
-            final ListView listView =(ListView) findViewById(R.id.list_category);
+            final ListView listView =(ListView) findViewById(R.id.listView_products);
             listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
+          /*   listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent1= new Intent(context,Products.class);
-                    String category =listView.getItemAtPosition(position).toString();
-                    //Toast.makeText(context, listView.getItemAtPosition(position)+"", Toast.LENGTH_SHORT).show();
-                    intent1.putExtra("category",category);
-                    startActivity(intent1);
+                    Intent intent= new Intent(context,Products.class);
+                    String product =listView.getItemAtPosition(position).toString();
+                    Toast.makeText(context, listView.getItemAtPosition(position)+"", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
                 }
-            });
+            });*/
 
         }
 
     }
-
-
 
 }

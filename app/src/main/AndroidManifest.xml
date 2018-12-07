@@ -55,7 +55,8 @@
                 android:value=".HomePage" />
         </activity>
         <activity android:name=".Category" />
-        <activity android:name=".Brand"></activity>
+        <activity android:name=".Brand" />
+        <activity android:name=".Products"></activity>
     </application>
 
 </manifest>
