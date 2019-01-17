@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ProductAdapter  extends ArrayAdapter<Product> {
@@ -29,12 +31,22 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_products, parent, false);
         }
         //Lookup view for data population
-        TextView name_product=(TextView) convertView.findViewById(R.id.name_product);
+        TextView category_product=(TextView) convertView.findViewById(R.id.category_product);
+        TextView model_product=(TextView) convertView.findViewById(R.id.model_product);
+        TextView brand_product=(TextView) convertView.findViewById(R.id.brand_product);
+        TextView price_product=(TextView) convertView.findViewById(R.id.price_product);
+        TextView description_product=(TextView) convertView.findViewById(R.id.description_product);
         // Populate the data into the template view using the data object
-        name_product.setText(product.model);
+        category_product.setText(product.category);
+        model_product.setText(product.model);
+        brand_product.setText(product.brand);
+        String price = new Double(product.price).toString();
+        price_product.setText(price);
+        description_product.setText(product.description);
 
-        //ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_brand);
-        //Picasso.get().load("http://"+ip+":9000/Application/showBrandImage?brand="+brand).into(imageView);
+
+        ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_product);
+        Picasso.get().load("http://"+ip+":9000/Application/showProductImage?model="+product.model).into(imageView);
 
 
         // Return the completed view to render on screen

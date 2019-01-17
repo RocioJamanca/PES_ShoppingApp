@@ -56,7 +56,8 @@
         </activity>
         <activity android:name=".Category" />
         <activity android:name=".Brand" />
-        <activity android:name=".Products"></activity>
+        <activity android:name=".Products" />
+        <activity android:name=".ProductOptions"></activity>
     </application>
 
 </manifest>

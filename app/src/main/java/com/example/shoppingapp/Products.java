@@ -121,15 +121,17 @@ public class Products extends AppCompatActivity {
             //Attach the adapter to a ListView
             final ListView listView =(ListView) findViewById(R.id.listView_products);
             listView.setAdapter(adapter);
-          /*   listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent= new Intent(context,Products.class);
+                    Intent intent= new Intent(context,ProductOptions.class);
                     String product =listView.getItemAtPosition(position).toString();
+                    Toast.makeText(context,product,Toast.LENGTH_SHORT);
                     Toast.makeText(context, listView.getItemAtPosition(position)+"", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("product",product);
                     startActivity(intent);
                 }
-            });*/
+            });
 
         }
 
