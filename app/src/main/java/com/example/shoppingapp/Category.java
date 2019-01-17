@@ -34,13 +34,8 @@ public class Category extends AppCompatActivity {
         ip = getResources().getString(R.string.ip);
         //new findCategories(this).execute("http://ip:9000/Application/findCategorries");
         new findCategories(this).execute("http://"+ip+":9000/Application/findCategories");
-
         ///
-
-
     }
-
-
 
     private class findCategories extends AsyncTask<String,Void,String> {
 
@@ -48,7 +43,6 @@ public class Category extends AppCompatActivity {
         InputStream stream =null;
         String str="";
         String result=null;
-
         private findCategories(Context context){
             this.context=context;
         }

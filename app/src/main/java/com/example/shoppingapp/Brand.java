@@ -122,10 +122,7 @@ public class Brand extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-
         }
-
     }
 
 
