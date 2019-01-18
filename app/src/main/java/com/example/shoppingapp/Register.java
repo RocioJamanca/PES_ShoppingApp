@@ -45,6 +45,7 @@ public class Register extends AppCompatActivity {
                     EditText e= (EditText) findViewById(R.id.emailR_txt);
 
                     // http://localhost:9000/Application/register?usernme=rocio&password=rocio
+                    Singleton.getEntity().username = u.getText().toString();
                     String query =String.format("http://"+getResources().getString(R.string.ip)+":9000/Application/registerM?username="+u.getText().toString()+"&email="+e.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria

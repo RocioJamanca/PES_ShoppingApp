@@ -100,7 +100,7 @@ public class Products extends AppCompatActivity {
             // Factory method to convert an array of JSON objects into a list of objects
 
             JSONArray jsonObjects = null;
-            ArrayList<Product> products = new ArrayList<Product>();
+            final ArrayList<Product> products = new ArrayList<Product>();
             try {
                 jsonObjects = new JSONArray(result);
                 for (int i = 0; i < jsonObjects.length(); i++) {
@@ -126,9 +126,8 @@ public class Products extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent= new Intent(context,ProductOptions.class);
                     String product =listView.getItemAtPosition(position).toString();
-                    Toast.makeText(context,product,Toast.LENGTH_SHORT);
-                    Toast.makeText(context, listView.getItemAtPosition(position)+"", Toast.LENGTH_SHORT).show();
-                    intent.putExtra("product",product);
+                    String model=products.get(position).model;
+                    intent.putExtra("model",model);
                     startActivity(intent);
                 }
             });

@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
                     //IP CASA:192.168.1.44
                     //IP red Mobil 192.168.43.91
                     // http://localhost:9000/Application/login?usernme=rocio&password=rocio
+                    Singleton.getEntity().username = u.getText().toString();
                     String query =String.format("http://"+getResources().getString(R.string.ip)+":9000/Application/loginM?username="+u.getText().toString()+"&password="+p.getText().toString());
                     URL url = new URL(query);
                     //Libreria
