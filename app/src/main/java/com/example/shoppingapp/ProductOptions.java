@@ -36,7 +36,7 @@ public class ProductOptions extends AppCompatActivity {
         setContentView(R.layout.activity_product_options);
         Intent intent = getIntent();
         String model = intent.getStringExtra("model");
-        Toast.makeText(this,model,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,Singleton.getEntity().username,Toast.LENGTH_SHORT).show();
         ip = getResources().getString(R.string.ip);
         //Before add product to the Cart or wishlist we are going to serch it
         new ProductOptions.findProduct(this).execute("http://"+ip+":9000/Application/findProduct?model="+model);
@@ -44,11 +44,14 @@ public class ProductOptions extends AppCompatActivity {
 
 
     public void addToCart(View view){
-        new ProductOptions.addToPurchase(this).execute("http://"+ip+":9000/Application/addPurchase?email=rociojamanca@hotmail&model=ENVY&quantity=4");
+        TextView textView=(TextView) findViewById(R.id.product_name);
+        TextView textView1=(TextView) findViewById(R.id.quantity_text);
+       // http://localhost:9000/Application/addPurchase?username=rocio&model=LG1&quantity=2
+        new ProductOptions.addToPurchase(this).execute("http://"+ip+":9000/Application/addPurchase?username="+Singleton.getEntity().username+"&model="+textView.getText().toString()+"&quantity="+textView1.getText().toString());
     }
     public void addToWishlist(View view){
-        new ProductOptions.addToWishlist(this).execute("http://"+ip+":9000/Application/addWishlist?email=rociojamanca@hotmail&model=ENVY");
-
+        TextView textView=(TextView) findViewById(R.id.product_name);
+        new ProductOptions.addToWishlist(this).execute("http://"+ip+":9000/Application/addWishlist?username="+Singleton.getEntity().username+"&model="+ textView.getText().toString());
     }
 
     private class findProduct extends AsyncTask<String,Void,String> {
@@ -182,7 +185,7 @@ public class ProductOptions extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
 
-           Toast.makeText(context,result, Toast.LENGTH_SHORT);
+           Toast.makeText(context,result, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -236,7 +239,7 @@ public class ProductOptions extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
 
-            Toast.makeText(context,result, Toast.LENGTH_SHORT);
+            Toast.makeText(context,result, Toast.LENGTH_SHORT).show();
         }
     }
 }
