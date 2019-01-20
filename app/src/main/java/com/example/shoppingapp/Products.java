@@ -93,9 +93,6 @@ public class Products extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-            // TextView textView=(TextView) findViewById( R.id.textView6);
-            //textView.setText(result);
-
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
 

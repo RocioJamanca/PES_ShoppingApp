@@ -21,8 +21,8 @@ import static android.support.v4.content.res.TypedArrayUtils.getString;
 public class CategoryAdapter extends ArrayAdapter<String> {
     Resources res = getContext().getResources();
 
-    public CategoryAdapter(Context context, ArrayList<String> categories){super (context,0,categories);
-
+    public CategoryAdapter(Context context, ArrayList<String> categories){
+        super (context,0,categories);
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
