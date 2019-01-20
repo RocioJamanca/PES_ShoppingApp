@@ -15,16 +15,24 @@ public class Product {
     public String brand;
     public double price;
     public String description;
+    public int quantity;
+    public int id;
 
 
     public Product(JSONObject object) {
-       try{
-           this.model=object.getString("model");
-           this.brand=object.getString("brand");
-           this.category=object.getString("category");
-           this.price=object.getDouble("price");
-           this.description=object.getString("description");
-       }
+
+    try{
+        if(object.length()==3){
+            this.quantity=object.getInt("quantity");
+            this.id = object.getInt("id");
+            object=object.getJSONObject("product");
+        }
+       this.model = object.getString("model");
+       this.brand = object.getString("brand");
+       this.category = object.getString("category");
+       this.price = object.getDouble("price");
+       this.description = object.getString("description");
+    }
        catch (JSONException e){
         e.printStackTrace();
        }

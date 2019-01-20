@@ -83,7 +83,11 @@ public class Purchase extends AppCompatActivity {
 
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
-
+            if(result==null){
+                findViewById(R.id.no_purchase).setVisibility(View.VISIBLE);
+                return;
+            }
+            findViewById(R.id.no_purchase).setVisibility(View.INVISIBLE);
             JSONArray jsonObjects = null;
             final ArrayList<Product> products = new ArrayList<Product>();
             try {
