@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage"
+    android:background="?attr/colorBackgroundFloating"
+    tools:context=".Shop"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
@@ -107,4 +108,27 @@
             android:layout_height="match_parent" />
     </TableLayout>
 
+    <Button
+        android:id="@+id/wishlist__buttonn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:onClick="wishlistT"
+        android:text="Wishlist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
+    <Button
+        android:id="@+id/purchase_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="68dp"
+        android:text="purchase"
+        android:onClick="purchase"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 </android.support.constraint.ConstraintLayout>

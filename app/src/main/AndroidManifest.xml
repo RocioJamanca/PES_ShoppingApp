@@ -45,9 +45,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage" />
         </activity>
-        <activity
-            android:name=".Shop"
-            android:parentActivityName=".HomePage">
+        <activity android:name=".Shop">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -57,7 +55,8 @@
         <activity android:name=".Category" />
         <activity android:name=".Brand" />
         <activity android:name=".Products" />
-        <activity android:name=".ProductOptions"></activity>
+        <activity android:name=".ProductOptions" />
+        <activity android:name=".Wishlist"></activity>
     </application>
 
 </manifest>

@@ -32,6 +32,14 @@ public class Shop extends AppCompatActivity {
 
     }
 
+    public void wishlistT(View view){
+        Intent intent= new Intent(this,Wishlist.class);
+        startActivity(intent);
+    }
+    public void purchase(View view){
+        Intent intent= new Intent(this,Purchase.class);
+        startActivity(intent);
+    }
 
     public void openSelection(View view){
         switch ( view.getId()){
@@ -43,6 +51,8 @@ public class Shop extends AppCompatActivity {
                 Intent intent1= new Intent(this,Brand.class);
                 startActivity(intent1);
                 break;
+
+
 
 
 
