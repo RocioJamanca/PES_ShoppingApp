@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorBackgroundFloating"
     tools:context=".Register">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
+        android:layout_height="75dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -17,11 +18,11 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="Register Page"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:typeface="normal"
-        app:fontFamily="serif-monospace"
+        android:typeface="monospace"
+        app:fontFamily="@font/adamina"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +49,7 @@
         <EditText
             android:id="@+id/userR_txt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -63,7 +64,7 @@
         <EditText
             android:id="@+id/passwordR_txt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -81,7 +82,7 @@
         <EditText
             android:id="@+id/emailR_txt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="15dp"
             android:layout_marginStart="16dp"
 
@@ -98,11 +99,11 @@
         <Button
             android:id="@+id/register_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/Color1"
+            android:background="@color/colorPrimary"
             android:onClick="register"
             android:text="Register"
             android:textColor="@android:color/background_light"
@@ -112,6 +113,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.88" />
+
+        <TextView
+            android:id="@+id/messsageTextR"
+            android:layout_width="358dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:lineSpacingExtra="10sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:typeface="monospace"
+            app:fontFamily="serif-monospace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_btn" />
 
         <ProgressBar
             android:id="@+id/progressBar_R"
@@ -129,22 +148,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/messsageTextR" />
 
-        <TextView
-            android:id="@+id/messsageTextR"
-            android:layout_width="358dp"
-            android:layout_height="67dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:lineSpacingExtra="10sp"
-            android:textSize="18sp"
-            android:typeface="monospace"
-            app:fontFamily="serif-monospace"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_btn" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

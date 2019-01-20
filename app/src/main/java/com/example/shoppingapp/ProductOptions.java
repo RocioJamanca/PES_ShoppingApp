@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -185,7 +186,7 @@ public class ProductOptions extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
 
-           Toast.makeText(context,result, Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -239,7 +240,8 @@ public class ProductOptions extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
 
-            Toast.makeText(context,result, Toast.LENGTH_SHORT).show();
+            Button bt1=(Button) findViewById(R.id.button_wishlist);
+            bt1.setVisibility(View.INVISIBLE);
         }
     }
 }

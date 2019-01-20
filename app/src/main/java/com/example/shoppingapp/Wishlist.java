@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,37 +22,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Products extends AppCompatActivity {
+public class Wishlist extends AppCompatActivity {
     static String ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
-        Intent intent = getIntent();
-        Intent intent1 = getIntent();
-        String brand = intent.getStringExtra("brand");
-        String category=intent1.getStringExtra("category");
-        //Toast.makeText(this,brand,Toast.LENGTH_LONG).show();
-        //Toast.makeText(this,category,Toast.LENGTH_LONG).show();
-        ip=getResources().getString(R.string.ip);
-        //new findCategories(this).execute("http://ip:9000/Application/findCategorries");
-        if(brand!=null) {
-            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByBrand?brand="+brand);
-        }
-        else if (category!=null)
-        {
-            new Products.findByCategoryOrBrand(this).execute("http://" + ip + ":9000/Application/findByCategories?category="+category);
-        }
-    }
+        setContentView(R.layout.activity_wishlist);
+        ip = getResources().getString(R.string.ip);
+        new Wishlist.getWishlist(this).execute("http://"+ip+":9000/Application/getWishlist?username="+Singleton.getEntity().username);
 
-    private class findByCategoryOrBrand extends AsyncTask<String,Void,String> {
+    }
+    private class getWishlist extends AsyncTask<String,Void,String> {
 
         Context context;
         InputStream stream =null;
         String str="";
         String result=null;
 
-        private findByCategoryOrBrand(Context context){
+        private getWishlist(Context context){
             this.context=context;
         }
 
@@ -82,7 +68,7 @@ public class Products extends AppCompatActivity {
 
                 result = sb.toString();
 
-                Log.i("CategoryOrBrandRespo",result);
+                Log.i("Wishlist Respones",result);
 
                 return result;
 
@@ -93,6 +79,7 @@ public class Products extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
+
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
 
@@ -116,10 +103,10 @@ public class Products extends AppCompatActivity {
             //Create the adapter to convert the array to views
             ProductAdapter adapter = new ProductAdapter(context,products);
             //Attach the adapter to a ListView
-            final ListView listView =(ListView) findViewById(R.id.listView_products);
+            final ListView listView =(ListView) findViewById(R.id.wishlist_list);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-               @Override
+                @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent= new Intent(context,ProductOptions.class);
                     String product =listView.getItemAtPosition(position).toString();
@@ -128,9 +115,7 @@ public class Products extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
         }
-
     }
 
 }

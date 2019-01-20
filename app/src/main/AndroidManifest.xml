@@ -14,7 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+
         <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,10 +56,44 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage" />
         </activity>
-        <activity android:name=".Category" />
-        <activity android:name=".Brand" />
-        <activity android:name=".Products" />
-        <activity android:name=".ProductOptions"></activity>
+        <activity android:name=".Category" >
+            android:parentActivityName=".Shop">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop"/>
+        </activity>
+        <activity android:name=".Brand">
+            android:parentActivityName=".Shop">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop"/>
+        </activity>
+
+        <activity android:name=".Products" >
+            android:parentActivityName=".Shop">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop"/>
+        </activity>
+
+        <activity android:name=".ProductOptions"
+            android:parentActivityName=".Products">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Products" />
+        </activity>
+
+
+        <activity android:name=".Wishlist" />
+        <activity android:name=".MyAccount" />
+        <activity android:name=".Purchase"></activity>
     </application>
 
 </manifest>

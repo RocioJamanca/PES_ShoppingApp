@@ -43,6 +43,11 @@ public class Shop extends AppCompatActivity {
                 Intent intent1= new Intent(this,Brand.class);
                 startActivity(intent1);
                 break;
+            case R.id.whishlist:
+                Intent intent2= new Intent(this,Wishlist.class);
+                startActivity(intent2);
+                break;
+                
 
 
 
