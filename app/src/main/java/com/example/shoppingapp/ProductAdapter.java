@@ -35,14 +35,22 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
         TextView model_product=(TextView) convertView.findViewById(R.id.model_product);
         TextView brand_product=(TextView) convertView.findViewById(R.id.brand_product);
         TextView price_product=(TextView) convertView.findViewById(R.id.price_product);
-        //TextView description_product=(TextView) convertView.findViewById(R.id.description_product);
+        if(product.quantity!=0){
+            TextView quantity_product=(TextView) convertView.findViewById(R.id.quantity_product);
+            TextView quantity_textView=(TextView) convertView.findViewById(R.id.quantity_textView);
+            quantity_product.setText(product.quantity);
+            quantity_product.setVisibility(View.VISIBLE);
+            quantity_textView.setVisibility(View.VISIBLE);
+        }
+
+
         // Populate the data into the template view using the data object
         category_product.setText(product.category);
         model_product.setText(product.model);
         brand_product.setText(product.brand);
         String price = new Double(product.price).toString();
         price_product.setText(price);
-        //description_product.setText(product.description);
+
 
 
         ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_product);
