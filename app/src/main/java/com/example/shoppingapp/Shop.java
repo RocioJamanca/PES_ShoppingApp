@@ -22,6 +22,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+//Menu de opciones : filtrar por categoria o marca y ver el carrito de  compra o la wishlist
+
 public class Shop extends AppCompatActivity {
 
 
@@ -32,9 +34,6 @@ public class Shop extends AppCompatActivity {
         Intent intent = getIntent();
 
     }
-
-
-
 
     public void openSelection(View view){
         switch ( view.getId()){
@@ -58,14 +57,7 @@ public class Shop extends AppCompatActivity {
                 startActivity(intent3);
                 findViewById(R.id.progressBar_Status).setVisibility(View.VISIBLE);
                 break;
-
-
-
-
-
         }
-
-
     }
 
 }

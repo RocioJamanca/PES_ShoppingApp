@@ -24,30 +24,27 @@ import java.util.ArrayList;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+//Muestra una lista de las marcas
 public class Brand extends AppCompatActivity {
  static String ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brand);
-
         ip = getResources().getString(R.string.ip);
         //new findCategories(this).execute("http://ip:9000/Application/findCategorries");
         new Brand.findBrands(this).execute("http://"+ip+":9000/Application/findBrands");
-
     }
 
+    //Buscamos las marcas de todos los productos para luego muestrear en la listView
     private class findBrands extends AsyncTask<String,Void,String> {
-
         Context context;
         InputStream stream =null;
         String str="";
         String result=null;
-
         private findBrands(Context context){
             this.context=context;
         }
-
         @Override
         protected String doInBackground(String... urls) {
             try{
@@ -72,11 +69,8 @@ public class Brand extends AppCompatActivity {
                 }
 
                 result = sb.toString();
-
                 Log.i("Brands Respones",result);
-
                 return result;
-
             }
             catch (IOException e){
                 return null;
@@ -84,12 +78,8 @@ public class Brand extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-            // TextView textView=(TextView) findViewById( R.id.textView6);
-            //textView.setText(result);
-
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
-            // User.fromJson(jsonArray);
             JSONArray jsonObjects = null;
             ArrayList<String> brands = new ArrayList<String>();
             try {
@@ -106,18 +96,17 @@ public class Brand extends AppCompatActivity {
             }
 
             //Construct the data source
-            //ArrayList<String> categoryArrayList = new ArrayList<>();
-            //Create the adapter to convert the array to views
             BrandAdapter adapter = new BrandAdapter(getApplicationContext(),brands);
             //Attach the adapter to a ListView
             final ListView listView =(ListView) findViewById(R.id.list_brand);
             listView.setAdapter(adapter);
+            //Cuando hacemos click en un elemento se nos abre la clase Productos con la lista de productos de la marca selecionada
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent= new Intent(context,Products.class);
                     String brand = listView.getItemAtPosition(position).toString();
-                    //Toast.makeText(context, listView.getItemAtPosition(position)+"", Toast.LENGTH_SHORT).show();
+                    //Pasamos la marca seleccionada
                     intent.putExtra("brand",brand);
                     startActivity(intent);
                 }

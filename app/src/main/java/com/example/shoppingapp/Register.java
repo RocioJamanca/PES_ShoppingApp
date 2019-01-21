@@ -29,6 +29,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
+//Función registrar
 public class Register extends AppCompatActivity {
     static String ip;
     @Override

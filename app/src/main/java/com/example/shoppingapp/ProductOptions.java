@@ -1,5 +1,4 @@
 package com.example.shoppingapp;
-
 import android.content.Context;
 import android.content.Intent;
 import android.icu.text.UnicodeSetSpanner;
@@ -14,13 +13,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+//Opciones de ompra del producto seleccionado
 public class ProductOptions extends AppCompatActivity {
     static String ip;
     @Override
@@ -37,13 +34,12 @@ public class ProductOptions extends AppCompatActivity {
         setContentView(R.layout.activity_product_options);
         Intent intent = getIntent();
         String model = intent.getStringExtra("model");
-
         ip = getResources().getString(R.string.ip);
         //Before add product to the Cart or wishlist we are going to serch it
         new ProductOptions.findProduct(this).execute("http://"+ip+":9000/Application/findProduct?model="+model);
     }
 
-
+    //funcion añadir al carrito
     public void addToCart(View view){
         TextView textView=(TextView) findViewById(R.id.product_name);
         TextView textView1=(TextView) findViewById(R.id.quantity_text);
@@ -59,11 +55,13 @@ public class ProductOptions extends AppCompatActivity {
             new ProductOptions.addToPurchase(this).execute("http://" + ip + ":9000/Application/addPurchase?username=" + Singleton.getEntity().username + "&model=" + textView.getText().toString() + "&quantity=" + textView1.getText().toString());
         }
     }
+    //funcion añadir a la wishlist
     public void addToWishlist(View view){
         TextView textView=(TextView) findViewById(R.id.product_name);
         new ProductOptions.addToWishlist(this).execute("http://"+ip+":9000/Application/addWishlist?username="+Singleton.getEntity().username+"&model="+ textView.getText().toString());
     }
 
+    //Antes de añadir al carrito o a la wishlist buscamos el producto con el nombre del modelo del mismo que será nuestro identificador del producto
     private class findProduct extends AsyncTask<String,Void,String> {
 
         Context context;
@@ -146,7 +144,6 @@ public class ProductOptions extends AppCompatActivity {
         }
     }
 
-
     private class addToPurchase extends AsyncTask<String,Void,String> {
 
         Context context;
@@ -198,8 +195,6 @@ public class ProductOptions extends AppCompatActivity {
 
         }
     }
-
-
 
     private class addToWishlist extends AsyncTask<String,Void,String> {
 

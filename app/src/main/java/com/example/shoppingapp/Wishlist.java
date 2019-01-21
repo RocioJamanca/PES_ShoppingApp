@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+//Muestra la lista de los productos que tenemos en la "lista de deseos"(wishlist)
 public class Wishlist extends AppCompatActivity {
     static String ip;
     @Override
@@ -27,7 +28,6 @@ public class Wishlist extends AppCompatActivity {
         setContentView(R.layout.activity_wishlist);
         ip = getResources().getString(R.string.ip);
         new Wishlist.getWishlist(this).execute("http://"+ip+":9000/Application/getWishlist?username="+Singleton.getEntity().username);
-
     }
     private class getWishlist extends AsyncTask<String,Void,String> {
 
@@ -81,10 +81,8 @@ public class Wishlist extends AppCompatActivity {
                 return;
             }
             findViewById(R.id.no_wishlist).setVisibility(View.INVISIBLE);
-
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
-
             JSONArray jsonObjects = null;
             final ArrayList<Product> products = new ArrayList<Product>();
             try {
@@ -101,7 +99,6 @@ public class Wishlist extends AppCompatActivity {
             }
 
             //Construct the data source
-            //ArrayList<String> categoryArrayList = new ArrayList<>();
             //Create the adapter to convert the array to views
             ProductAdapter adapter = new ProductAdapter(context,products);
             //Attach the adapter to a ListView

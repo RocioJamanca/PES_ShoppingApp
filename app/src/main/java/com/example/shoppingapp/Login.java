@@ -28,6 +28,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
+//Logeamos
 public class Login extends AppCompatActivity {
 
     static String ip;
@@ -38,9 +39,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
         Intent intent = getIntent();
         ip = getResources().getString(R.string.ip);
-
     }
-
 
     public void login_click(View view){
         EditText u = (EditText) findViewById(R.id.user_txt);
@@ -77,7 +76,7 @@ public class Login extends AppCompatActivity {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(10000);
                 conn.setConnectTimeout(15000);
-                conn.setRequestMethod("POST");
+                conn.setRequestMethod("POST"); //Utilizamos el método post
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
                 conn.connect();
@@ -124,9 +123,7 @@ public class Login extends AppCompatActivity {
                 }
             }
             return str;
-
         }
-
 
         @Override
         protected void onPostExecute(String result) {

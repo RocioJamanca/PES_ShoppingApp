@@ -22,6 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+//Muestra lo que tenemos en nuestro carrito de la compra
 public class Purchase extends AppCompatActivity {
     static String ip;
 
@@ -33,6 +34,7 @@ public class Purchase extends AppCompatActivity {
         new Purchase.getPurchase(this).execute("http://"+ip+":9000/Application/getPurchase?username="+Singleton.getEntity().username);
 
     }
+
     private class getPurchase extends AsyncTask<String,Void,String> {
 
         Context context;
@@ -80,7 +82,6 @@ public class Purchase extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects
             if(result==null){
@@ -104,8 +105,6 @@ public class Purchase extends AppCompatActivity {
             }
 
             //Construct the data source
-            //ArrayList<String> categoryArrayList = new ArrayList<>();
-            //Create the adapter to convert the array to views
             ProductAdapter adapter = new ProductAdapter(context,products);
             //Attach the adapter to a ListView
             final ListView listView =(ListView) findViewById(R.id.purchase_listView);

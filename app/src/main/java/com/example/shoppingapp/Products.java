@@ -11,10 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+//Muestra una lista de productos
 public class Products extends AppCompatActivity {
     static String ip;
     @Override
@@ -46,6 +45,7 @@ public class Products extends AppCompatActivity {
         }
     }
 
+    //Muestra una lista de productos filtrados por categoria o marca
     private class findByCategoryOrBrand extends AsyncTask<String,Void,String> {
 
         Context context;

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+//Pagina de inicio
 public class HomePage extends AppCompatActivity {
 
     @Override
@@ -16,10 +17,8 @@ public class HomePage extends AppCompatActivity {
     public void openLogin (View view){
         Intent intent= new Intent(this,Login.class);
         startActivity(intent);
-
     }
     public void openRegister (View view){
-
         Intent intent= new Intent(this,Register.class);
         startActivity(intent);
 

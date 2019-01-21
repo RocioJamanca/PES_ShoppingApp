@@ -19,6 +19,7 @@ public class Product {
     public int id;
 
 
+    //Clase producto defino esta clase para utilizar luego el adapter
     public Product(JSONObject object) {
 
     try{

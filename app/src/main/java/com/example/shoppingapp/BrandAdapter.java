@@ -1,5 +1,4 @@
 package com.example.shoppingapp;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -15,9 +14,7 @@ import java.util.ArrayList;
 
 public class BrandAdapter extends ArrayAdapter<String> {
     Resources res = getContext().getResources();
-
     public BrandAdapter(Context context, ArrayList<String> brands){super (context,0,brands);
-
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -33,9 +30,9 @@ public class BrandAdapter extends ArrayAdapter<String> {
         // Populate the data into the template view using the data object
         name_brand.setText(brand);
 
+        //Llamamos a la funcion del servido para consultar las imagenes del mismo
         ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_brand);
         Picasso.get().load("http://"+ip+":9000/Application/showBrandImage?brand="+brand).into(imageView);
-
 
         // Return the completed view to render on screen
         return convertView;

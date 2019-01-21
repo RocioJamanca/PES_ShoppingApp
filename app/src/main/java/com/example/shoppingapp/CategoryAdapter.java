@@ -38,9 +38,9 @@ public class CategoryAdapter extends ArrayAdapter<String> {
         // Populate the data into the template view using the data object
         name_category.setText(category);
 
+        //Aqui consultamos la imagen al servidor
         ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView2);
         Picasso.get().load("http://"+ip+":9000/Application/showCategoryImage?category="+category).into(imageView);
-
 
         // Return the completed view to render on screen
         return convertView;

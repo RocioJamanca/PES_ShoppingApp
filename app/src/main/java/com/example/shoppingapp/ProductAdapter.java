@@ -42,8 +42,6 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
             quantity_product.setVisibility(View.VISIBLE);
             quantity_textView.setVisibility(View.VISIBLE);
         }
-
-
         // Populate the data into the template view using the data object
         category_product.setText(product.category);
         model_product.setText(product.model);
@@ -51,11 +49,9 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
         String price = new Double(product.price).toString();
         price_product.setText(price);
 
-
-
+        //consultamos la imagen al servidor
         ImageView imageView= (ImageView) convertView.findViewById(R.id.imageView_product);
         Picasso.get().load("http://"+ip+":9000/Application/showProductImage?model="+product.model).into(imageView);
-
 
         // Return the completed view to render on screen
         return convertView;
