@@ -37,7 +37,7 @@ public class ProductOptions extends AppCompatActivity {
         setContentView(R.layout.activity_product_options);
         Intent intent = getIntent();
         String model = intent.getStringExtra("model");
-        Toast.makeText(this,Singleton.getEntity().username,Toast.LENGTH_SHORT).show();
+
         ip = getResources().getString(R.string.ip);
         //Before add product to the Cart or wishlist we are going to serch it
         new ProductOptions.findProduct(this).execute("http://"+ip+":9000/Application/findProduct?model="+model);
@@ -185,7 +185,7 @@ public class ProductOptions extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-
+            Toast.makeText(context,"Correctly added to cart!",Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -239,6 +239,7 @@ public class ProductOptions extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
+            Toast.makeText(context,"Correctly added to wishlist!",Toast.LENGTH_SHORT).show();
 
             Button bt1=(Button) findViewById(R.id.button_wishlist);
             bt1.setVisibility(View.INVISIBLE);

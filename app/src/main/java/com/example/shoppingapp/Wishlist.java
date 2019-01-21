@@ -76,6 +76,11 @@ public class Wishlist extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
+            if(result==null){
+                findViewById(R.id.no_wishlist).setVisibility(View.VISIBLE);
+                return;
+            }
+            findViewById(R.id.no_wishlist).setVisibility(View.INVISIBLE);
 
             //Add item to adapter
             // Factory method to convert an array of JSON objects into a list of objects

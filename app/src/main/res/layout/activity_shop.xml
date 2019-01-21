@@ -8,6 +8,23 @@
     tools:context=".Shop"
     tools:layout_editor_absoluteY="81dp">
 
+    <ProgressBar
+        android:id="@+id/progressBar_Status"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="181dp"
+        android:layout_marginLeft="181dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginRight="182dp"
+        android:foregroundGravity="clip_horizontal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -108,27 +125,4 @@
             android:layout_height="match_parent" />
     </TableLayout>
 
-    <Button
-        android:id="@+id/wishlist__buttonn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
-        android:onClick="wishlistT"
-        android:text="Wishlist"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
-
-    <Button
-        android:id="@+id/purchase_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="68dp"
-        android:onClick="purchase"
-        android:text="purchase"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 </android.support.constraint.ConstraintLayout>
