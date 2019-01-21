@@ -51,12 +51,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage" />
         </activity>
-        <activity android:name=".Category" />
-        <activity android:name=".Brand" />
-        <activity android:name=".Products" />
-        <activity android:name=".ProductOptions" />
-        <activity android:name=".Wishlist"></activity>
-        <activity android:name=".Purchase"></activity>
+        <activity android:name=".Category" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
+        <activity android:name=".Brand" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
+        <activity android:name=".Products" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
+        <activity android:name=".ProductOptions" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
+        <activity android:name=".Wishlist">>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
+        <activity android:name=".Purchase">>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Shop" />
+        </activity>
     </application>
 
 </manifest>

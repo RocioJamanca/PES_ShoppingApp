@@ -47,8 +47,17 @@ public class ProductOptions extends AppCompatActivity {
     public void addToCart(View view){
         TextView textView=(TextView) findViewById(R.id.product_name);
         TextView textView1=(TextView) findViewById(R.id.quantity_text);
-       // http://localhost:9000/Application/addPurchase?username=rocio&model=LG1&quantity=2
-        new ProductOptions.addToPurchase(this).execute("http://"+ip+":9000/Application/addPurchase?username="+Singleton.getEntity().username+"&model="+textView.getText().toString()+"&quantity="+textView1.getText().toString());
+        if(textView1.getText().toString().equals(null)||textView1.getText().toString().equals("0"))
+        {
+            textView1.setText("1");
+            Toast.makeText(this,"Minimum quantity required is 1",Toast.LENGTH_SHORT).show();
+            new ProductOptions.addToPurchase(this).execute("http://"+ip+":9000/Application/addPurchase?username="+Singleton.getEntity().username+"&model="+textView.getText().toString()+"&quantity=1");
+
+        }
+        else {
+            // http://localhost:9000/Application/addPurchase?username=rocio&model=LG1&quantity=2
+            new ProductOptions.addToPurchase(this).execute("http://" + ip + ":9000/Application/addPurchase?username=" + Singleton.getEntity().username + "&model=" + textView.getText().toString() + "&quantity=" + textView1.getText().toString());
+        }
     }
     public void addToWishlist(View view){
         TextView textView=(TextView) findViewById(R.id.product_name);
