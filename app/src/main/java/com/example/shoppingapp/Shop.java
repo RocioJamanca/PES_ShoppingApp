@@ -54,7 +54,7 @@ public class Shop extends AppCompatActivity {
                 findViewById(R.id.progressBar_Status).setVisibility(View.VISIBLE);
                 break;
             case R.id.myaccount:
-                Intent intent3= new Intent(this,Wishlist.class);
+                Intent intent3= new Intent(this,Purchase.class);
                 startActivity(intent3);
                 findViewById(R.id.progressBar_Status).setVisibility(View.VISIBLE);
                 break;

@@ -76,7 +76,7 @@ public class Wishlist extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String result){
-            if(result==null){
+            if(result.equals("[]")){
                 findViewById(R.id.no_wishlist).setVisibility(View.VISIBLE);
                 return;
             }
